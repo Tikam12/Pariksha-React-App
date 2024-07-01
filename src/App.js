@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import Navbar from './navbar';
+import { Route, Routes } from "react-router";
+import Home from './home';
+import Test from './test';
+import Result from './result';
+import TestDetail from './testDetail';
+import Footer from './footer';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <div style={{minHeight:'85vh'}}>
+          <Navbar />
+          <switch>
+            <Routes>
+              <Route path='/' Component={Home}></Route>
+              <Route path='/test' Component={Test}></Route>
+              <Route path='/result' Component={Result}></Route>
+              <Route path='/testDetail/:id' Component={TestDetail}></Route>
+            </Routes>
+          </switch>
+        </div>
+        <Footer />
+      </div>
+    )
+  }
 }
+
 
 export default App;
